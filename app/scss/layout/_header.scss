@@ -1,0 +1,30 @@
+@use '../abstracts' as *;
+
+.header {
+  --header-radius: #{rem(20)};
+  background-color: var(--color-top-background);
+  border-end-start-radius: var(--header-radius);
+  border-end-end-radius: var(--header-radius);
+  @include theme-transition(background-color);
+
+  &__container {
+    width: min(100% - (rem(24) * 2), var(--container-max-width));
+    padding-block: rem(38) rem(84);
+    margin-inline: auto;
+
+    @include breakpoint(medium) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-block-end: rem(154);
+    }
+  }
+
+  &__infos {
+    @include breakpoint-down(medium) {
+      padding-block-end: rem(24);
+      border-block-end: rem(1) solid var(--color-text-1);
+      @include theme-transition(border-block-end-color);
+    }
+  }
+}

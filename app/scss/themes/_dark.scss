@@ -1,0 +1,13 @@
+@use '../abstracts' as *;
+
+:root {
+  --color-dark-toggle: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+
+  @include theme(dark, true) {
+    --color-background: hsl(230, 17%, 14%);
+    --color-top-background: hsl(232, 19%, 15%);
+    --color-card-background: hsl(228, 28%, 20%);
+    --color-text-1: hsl(228, 34%, 66%);
+    --color-text-2: hsl(0, 0%, 100%);
+  }
+}

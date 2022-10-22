@@ -1,0 +1,71 @@
+@use '../abstracts' as *;
+
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: rem(14);
+  position: relative;
+  margin-block-start: rem(16);
+
+  @include breakpoint(medium) {
+    margin-block-start: 0;
+  }
+
+  &__input {
+    position: absolute;
+    width: 0;
+    opacity: 0;
+  }
+
+  &__custom {
+    --toggle-height: #{rem(24)};
+    --toggle-radius: calc(var(--toggle-height) / 2);
+    --toggle-padding: #{rem(3)};
+    width: rem(48);
+    height: rem(24);
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: var(--color-light-toggle);
+    padding: var(--toggle-padding);
+    border-radius: var(--toggle-radius);
+    cursor: pointer;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background-image: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+      border-radius: inherit;
+      transition: opacity var(--duration-1) linear;
+    }
+
+    &::after {
+      --toggle-icon-size: calc(var(--toggle-height) - var(--toggle-padding) * 2);
+      content: '';
+      width: var(--toggle-icon-size);
+      height: var(--toggle-icon-size);
+      display: block;
+      z-index: 10;
+      background-color: var(--color-top-background);
+      border-radius: 50%;
+      transform: translateX(calc(100% + var(--toggle-padding) * 2));
+      @include theme-transition((background-color, transform));
+    }
+  }
+
+  :root[data-dark-mode='true'] &__custom::before,
+  &__input:focus-visible + &__custom::before,
+  &__custom:hover::before {
+    opacity: 1;
+  }
+
+  &__input:checked + &__custom::after {
+    transform: translateX(0%);
+  }
+}

@@ -1,0 +1,28 @@
+@use 'breakpoints' as *;
+
+@mixin breakpoint($size) {
+  @media screen and (min-width: map-get($breakpoints-up, $size)) {
+    @content;
+  }
+}
+
+@mixin breakpoint-down($size) {
+  @media screen and (max-width: map-get($breakpoints-down, $size)) {
+    @content;
+  }
+}
+
+@mixin theme($scheme, $isDarkMode) {
+  &[data-dark-mode='#{$isDarkMode}'] {
+    @content;
+  }
+
+  @media (prefers-color-scheme: $scheme) {
+    @content;
+  }
+}
+
+@mixin theme-transition($properties) {
+  transition-property: $properties;
+  transition: var(--duration-1) linear;
+}

@@ -1,0 +1,10 @@
+@use '../abstracts' as *;
+
+.overview {
+  --cards-row-gap: #{rem(16)};
+  margin-block-start: rem(48);
+
+  @include breakpoint(medium) {
+    --cards-row-gap: #{rem(24)};
+  }
+}

@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+:root {
+  --container-max-width: #{rem(1110)};
+  --duration-1: 200ms;
+}
+
+body {
+  background-color: var(--color-background);
+  @include theme-transition(background-color);
+}
+
+.space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cards-wrapper {
+  --card-max-width: #{rem(345)};
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(auto, var(--card-max-width)));
+  justify-content: center;
+  gap: var(--cards-row-gap) rem(30);
+
+  @include breakpoint(large) {
+    --card-max-width: #{rem(400)};
+  }
+
+  @include breakpoint(xlarge) {
+    --card-max-width: #{rem(255)};
+  }
+}

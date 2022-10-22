@@ -1,0 +1,78 @@
+@use '../abstracts' as *;
+
+.card {
+  --card-radius: #{rem(5)};
+  display: grid;
+  border-radius: var(--card-radius);
+  transition: filter var(--duration-1) ease;
+  cursor: pointer;
+
+  &:hover {
+    filter: saturate(150%) contrast(90%);
+  }
+
+  :root[data-dark-mode='true'] &:hover {
+    filter: brightness(130%);
+  }
+
+  &--followers {
+    @extend .card;
+    --card-border-width: #{rem(4)};
+    justify-items: center;
+    row-gap: rem(28);
+    background: var(--card-border-color) top left / 100% var(--card-border-width) border-box no-repeat, var(--color-card-background) padding-box;
+    padding: rem(28) rem(24) rem(24);
+    border-block-start: var(--card-border-width) solid transparent;
+    @include theme-transition(background);
+  }
+
+  &--facebook {
+    --card-border-color: linear-gradient(var(--color-facebook), var(--color-facebook));
+  }
+
+  &--twitter {
+    --card-border-color: linear-gradient(var(--color-twitter), var(--color-twitter));
+  }
+
+  &--instagram {
+    --card-border-color: var(--color-instagram);
+  }
+
+  &--youtube {
+    --card-border-color: linear-gradient(var(--color-youtube), var(--color-youtube));
+  }
+
+  &--overview {
+    @extend .card;
+    row-gap: rem(26);
+    background-color: var(--color-card-background);
+    padding: rem(26) rem(30) rem(26) rem(24);
+    @include theme-transition(background-color);
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    column-gap: rem(8);
+  }
+
+  &__current {
+    display: grid;
+    justify-items: center;
+    row-gap: rem(10);
+  }
+
+  &__summary {
+    display: flex;
+    align-items: center;
+    column-gap: rem(4);
+  }
+
+  &__head {
+    align-items: center;
+  }
+
+  &__body {
+    align-items: flex-end;
+  }
+}

@@ -1,0 +1,92 @@
+@use '../abstracts' as *;
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-size-2: #{rem(12)};
+  --font-size-3: #{rem(13)};
+  --font-size-4: #{rem(14)};
+  --font-size-5: #{rem(16)};
+  --font-size-6: #{rem(24)};
+  --font-size-7: #{rem(24)};
+  --font-size-8: #{rem(30)};
+  --font-size-9: #{rem(52)};
+
+  @include breakpoint(medium) {
+    --font-size-7: #{rem(28)};
+  }
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+.heading-1 {
+  font-size: var(--font-size-7);
+  font-weight: 700;
+  color: var(--color-text-2);
+  margin-block-end: rem(10);
+  @include theme-transition(color);
+
+  @include breakpoint-down(xsmall) {
+    line-height: 1.2;
+  }
+}
+
+.heading-2 {
+  font-size: var(--font-size-2);
+  font-weight: 700;
+  color: var(--color-text-1);
+  @include theme-transition(color);
+
+  &--lg {
+    @extend .heading-2;
+    margin-block-end: rem(26);
+    font-size: var(--font-size-6);
+    color: var(--color-text-2);
+  }
+}
+
+.heading-3 {
+  font-size: var(--font-size-4);
+  color: var(--color-text-1);
+  @include theme-transition(color);
+}
+
+.text {
+  font-size: var(--font-size-4);
+  font-weight: 700;
+  color: var(--color-text-1);
+  @include theme-transition(color);
+
+  &--sm {
+    @extend .text;
+    font-size: var(--font-size-3);
+  }
+
+  &--lg {
+    @extend .text;
+    font-size: var(--font-size-8);
+    color: var(--color-text-2);
+  }
+
+  &--xl {
+    @extend .text;
+    font-size: var(--font-size-9);
+    color: var(--color-text-2);
+  }
+
+  &--spaced {
+    @extend .text;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: em(4);
+  }
+
+  &--green {
+    color: var(--color-lime-green);
+  }
+
+  &--red {
+    color: var(--color-bright-red);
+  }
+}
